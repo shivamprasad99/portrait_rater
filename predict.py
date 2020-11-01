@@ -251,7 +251,7 @@ class GoogLeNet(nn.Module):
         # N x 1000 (num_classes)
         return x, aux2, aux1
 
-    @torch.jit.unused
+    # @torch.jit.unused
     def eager_outputs(self, x, aux2, aux1):
         # type: (Tensor, Optional[Tensor], Optional[Tensor]) -> GoogLeNetOutputs
         if self.training and self.aux_logits:
@@ -393,3 +393,11 @@ def predict_image(image_path):
     return output.data.cpu().numpy().argmax()
 
     
+f = open('path.txt','r')
+path = f.read()
+f.close()
+os.remove('path.txt')
+f = open('result.txt','w')
+f.write(str(predict_image(path)))
+f.close()
+print('CLOSED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')

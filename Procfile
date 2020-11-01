@@ -1,0 +1,1 @@
+web: gunicorn portrait_rater.wsgi
